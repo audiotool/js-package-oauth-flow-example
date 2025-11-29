@@ -8,9 +8,13 @@ import {
   setUserInfo,
 } from "./edit-html"
 
+// Dynamically build redirect URL for both local dev and GitHub Pages
+const redirectUrl = `${window.location.origin}${import.meta.env.BASE_URL}`
+console.debug("redirectUrl", redirectUrl)
+
 const manager = createOIDCAuthManager({
   clientId: "5eeb1a66-0de1-49d8-a230-3ce22f2dff57",
-  redirectUrl: "http://127.0.0.1:5173/",
+  redirectUrl,
   scope: "user:read project:read",
 })
 
